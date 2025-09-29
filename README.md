@@ -342,8 +342,8 @@ curl http://localhost:3000/health
 ### Getting Help
 
 - 📖 Check the [API Documentation](http://localhost:8000/docs)
-- 🐛 [Open an issue](https://github.com/your-repo/issues)
-- 💬 [Discussion forum](https://github.com/your-repo/discussions)
+- 🐛 [Open an issue](https://github.com/OkayJosh/weather/issues)
+- 💬 [Discussion forum](https://github.com/OkayJosh/weather/discussions)
 
 ## 📄 License
 
