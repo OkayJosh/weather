@@ -143,7 +143,6 @@ describe('WeatherForm', () => {
     });
 
     it('prevents form submission when input is empty', async () => {
-      const user = userEvent.setup();
       render(<WeatherForm {...defaultProps} />);
       
       const button = screen.getByRole('button', { name: /get weather/i });
@@ -182,7 +181,6 @@ describe('WeatherForm', () => {
       render(<WeatherForm {...defaultProps} />);
       
       const input = screen.getByLabelText(/enter city name/i);
-      const button = screen.getByRole('button', { name: /get weather/i });
       
       // Type something then delete it to trigger validation
       await user.type(input, 'Test');
@@ -376,7 +374,6 @@ describe('WeatherForm', () => {
     });
 
     it('does not submit when Enter is pressed with empty input', async () => {
-      const user = userEvent.setup();
       render(<WeatherForm {...defaultProps} />);
       
       const input = screen.getByLabelText(/enter city name/i);
