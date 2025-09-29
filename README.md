@@ -31,7 +31,7 @@ A production-grade weather application built with **Domain-Driven Design (DDD)**
 
 1. **Clone and setup**:
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/OkayJosh/weather
    cd weather-app
    cp .env.example .env
    ```
@@ -121,6 +121,12 @@ npm install
 npm run dev
 ```
 
+**Start as a single application using docker compose in development**:
+```bash
+docker compose -f docker-compose.yml up --build -d
+```
+
+
 ### Testing
 
 **Unit Tests**:
@@ -141,7 +147,7 @@ docker compose up -d
 **Frontend Tests**:
 ```bash
 cd frontend
-npm run test
+npm test
 ```
 
 ## 📚 API Documentation
@@ -312,15 +318,15 @@ cat .env | grep WEATHER_API_KEY
 ```bash
 # Check Docker daemon
 docker --version
-docker-compose --version
+docker compose --version
 
 # Check port conflicts
 lsof -i :3000
 lsof -i :8000
 
 # View logs
-docker-compose logs backend
-docker-compose logs frontend
+docker compose logs backend
+docker compose logs frontend
 ```
 
 **Tests failing**:
