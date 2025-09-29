@@ -2,7 +2,7 @@
  * WeatherForm component for city input and weather data fetching
  */
 
-import React, { useState } from 'react';
+import { useState, type FormEvent, type ChangeEvent } from 'react';
 
 interface WeatherFormProps {
   onSubmit: (city: string) => Promise<void>;
@@ -10,11 +10,11 @@ interface WeatherFormProps {
   error: string | null;
 }
 
-const WeatherForm: React.FC<WeatherFormProps> = ({ onSubmit, loading, error }) => {
+const WeatherForm = ({ onSubmit, loading, error }: WeatherFormProps) => {
   const [city, setCity] = useState('');
   const [inputError, setInputError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     
     // Clear previous input error
@@ -37,7 +37,7 @@ const WeatherForm: React.FC<WeatherFormProps> = ({ onSubmit, loading, error }) =
     await onSubmit(trimmedCity);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setCity(value);
     

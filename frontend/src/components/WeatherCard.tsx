@@ -2,8 +2,7 @@
  * WeatherCard component for displaying weather information
  */
 
-import React from 'react';
-import { CityWeather } from '../lib/api';
+import type { CityWeather } from '../lib/api';
 
 interface WeatherCardProps {
   weather: CityWeather;

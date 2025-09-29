@@ -5,10 +5,10 @@
  * and coordinating between the form and display components.
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import WeatherForm from './components/WeatherForm';
 import WeatherCard from './components/WeatherCard';
-import { getWeather, getErrorMessage, CityWeather } from './lib/api';
+import { getWeather, getErrorMessage, type CityWeather } from './lib/api';
 import './App.css';
 
 function App() {
