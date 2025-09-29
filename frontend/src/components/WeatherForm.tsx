@@ -13,9 +13,15 @@ interface WeatherFormProps {
 const WeatherForm = ({ onSubmit, loading, error }: WeatherFormProps) => {
   const [city, setCity] = useState('');
   const [inputError, setInputError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    
+    // Prevent double submission
+    if (isSubmitting || loading) {
+      return;
+    }
     
     // Clear previous input error
     setInputError(null);
@@ -34,7 +40,12 @@ const WeatherForm = ({ onSubmit, loading, error }: WeatherFormProps) => {
     }
     
     // Submit the form
-    await onSubmit(trimmedCity);
+    setIsSubmitting(true);
+    try {
+      await onSubmit(trimmedCity);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +79,7 @@ const WeatherForm = ({ onSubmit, loading, error }: WeatherFormProps) => {
           />
           <button
             type="submit"
-            disabled={loading || !city.trim()}
+            disabled={loading || isSubmitting || !city.trim()}
             className="submit-button"
             aria-label="Get weather"
           >

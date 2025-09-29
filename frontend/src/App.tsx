@@ -17,6 +17,11 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   const handleWeatherSearch = async (city: string): Promise<void> => {
+    // Prevent multiple simultaneous requests
+    if (loading) {
+      return;
+    }
+    
     setLoading(true);
     setError(null);
     

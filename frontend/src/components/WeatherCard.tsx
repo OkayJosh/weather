@@ -13,6 +13,10 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weather }) => {
   const formatDate = (isoString: string): string => {
     try {
       const date = new Date(isoString);
+      // Check if the date is actually valid
+      if (isNaN(date.getTime())) {
+        return 'Unknown';
+      }
       return date.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -41,14 +45,14 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weather }) => {
     
     if (lowerCondition.includes('sunny') || lowerCondition.includes('clear')) {
       return '☀️';
+    } else if (lowerCondition.includes('thunder') || lowerCondition.includes('storm')) {
+      return '⛈️';
     } else if (lowerCondition.includes('cloud')) {
       return '☁️';
     } else if (lowerCondition.includes('rain') || lowerCondition.includes('drizzle')) {
       return '🌧️';
     } else if (lowerCondition.includes('snow')) {
       return '❄️';
-    } else if (lowerCondition.includes('thunder') || lowerCondition.includes('storm')) {
-      return '⛈️';
     } else if (lowerCondition.includes('fog') || lowerCondition.includes('mist')) {
       return '🌫️';
     } else {
